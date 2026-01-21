@@ -1,19 +1,114 @@
--- Tabla de equipos
-CREATE TABLE IF NOT EXISTS teams (
-    id SERIAL PRIMARY KEY,
-    name TEXT NOT NULL,
-    points INTEGER NOT NULL DEFAULT 0
-);
-
--- Tabla de partidas
-CREATE TABLE IF NOT EXISTS matches (
-    id SERIAL PRIMARY KEY,
-    team_id INTEGER NOT NULL,
-    points INTEGER NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT fk_team
-        FOREIGN KEY (team_id)
-        REFERENCES teams(id)
-        ON DELETE CASCADE
-);
+  File "<frozen importlib._bootstrap_external>", line 1023, in exec_module
+  File "/app/app.py", line 36, in <module>
+    @app.before_first_request
+     ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "/app/.venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+[2026-01-21 17:02:57 +0000] [1] [ERROR] Worker (pid:2) exited with code 3
+[2026-01-21 17:02:57 +0000] [1] [ERROR] Shutting down: Master
+[2026-01-21 17:02:57 +0000] [1] [ERROR] Reason: Worker failed to boot.
+[2026-01-21 17:02:59 +0000] [1] [INFO] Starting gunicorn 23.0.0
+[2026-01-21 17:02:59 +0000] [1] [INFO] Listening at: http://0.0.0.0:8080 (1)
+[2026-01-21 17:02:59 +0000] [1] [INFO] Using worker: sync
+[2026-01-21 17:02:59 +0000] [2] [INFO] Booting worker with pid: 2
+[2026-01-21 17:03:00 +0000] [2] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/app/.venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+    ~~~~~~~~~~~~~~^^
+  File "/app/.venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+                ~~~~~~~~~~~~~^^
+  File "/app/.venv/lib/python3.13/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+                    ~~~~~~~~~^^
+    mod = importlib.import_module(module)
+  File "/mise/installs/python/3.13.11/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    @app.before_first_request
+  File "/app/.venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+     ^^^^^^^^^^^^^^^^^^^^^^^^
+    return self.load_wsgiapp()
+           ~~~~~~~~~~~~~~~~~^^
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/app/.venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    return util.import_app(self.app_uri)
+  File "/app/.venv/lib/python3.13/site-packages/gunicorn/util.py", line 370, in import_app
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap_external>", line 1023, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "/app/app.py", line 36, in <module>
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+AttributeError: 'Flask' object has no attribute 'before_first_request'. Did you mean: 'before_request'?
+[2026-01-21 17:03:00 +0000] [2] [INFO] Worker exiting (pid: 2)
+[2026-01-21 17:03:00 +0000] [1] [ERROR] Worker (pid:2) exited with code 3
+[2026-01-21 17:03:00 +0000] [1] [ERROR] Shutting down: Master
+[2026-01-21 17:03:00 +0000] [1] [ERROR] Reason: Worker failed to boot.
+[2026-01-21 17:12:35 +0000] [1] [INFO] Starting gunicorn 23.0.0
+[2026-01-21 17:12:35 +0000] [1] [INFO] Listening at: http://0.0.0.0:8080 (1)
+[2026-01-21 17:12:35 +0000] [1] [INFO] Using worker: sync
+[2026-01-21 17:12:35 +0000] [2] [INFO] Booting worker with pid: 2
+[2026-01-21 17:12:35 +0000] [2] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/app/.venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+    ~~~~~~~~~~~~~~^^
+  File "/app/.venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+                ~~~~~~~~~~~~~^^
+  File "/app/.venv/lib/python3.13/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+                    ~~~~~~~~~^^
+  File "/app/.venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+           ~~~~~~~~~~~~~~~~~^^
+[2026-01-21 17:12:35 +0000] [1] [ERROR] Worker (pid:2) exited with code 3
+[2026-01-21 17:12:35 +0000] [1] [ERROR] Shutting down: Master
+[2026-01-21 17:12:35 +0000] [1] [ERROR] Reason: Worker failed to boot.
+  File "/app/.venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.13/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/mise/installs/python/3.13.11/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1023, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/app/app.py", line 36, in <module>
+    @app.before_first_request
+     ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Flask' object has no attribute 'before_first_request'. Did you mean: 'before_request'?
+[2026-01-21 17:12:35 +0000] [2] [INFO] Worker exiting (pid: 2)
+[2026-01-21 17:12:38 +0000] [1] [INFO] Starting gunicorn 23.0.0
+[2026-01-21 17:12:38 +0000] [1] [INFO] Listening at: http://0.0.0.0:8080 (1)
+[2026-01-21 17:12:38 +0000] [1] [INFO] Using worker: sync
+[2026-01-21 17:12:38 +0000] [2] [INFO] Booting worker with pid: 2
+                    ~~~~~~~~~^^
+  File "/app/.venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/app/.venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.13/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/mise/installs/python/3.13.11/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
